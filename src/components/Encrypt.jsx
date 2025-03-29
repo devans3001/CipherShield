@@ -10,7 +10,7 @@ const EncryptModal = ({ onClose }) => {
   const [step, setStep] = useState(1);
   const [text, setText] = useState("");
   // const [mode, setMode] = useState("");
-  const [shift, setShift] = useState(4);
+  const [shift, setShift] = useState("e");
   const [output, setOutput] = useState("");
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -101,9 +101,9 @@ const EncryptModal = ({ onClose }) => {
             <Title>Enter Shift Key</Title>
             <Input
               type="text"
-              placeholder="Enter a number..."
+              placeholder="Enter a letter(key)..."
               value={shift}
-              onChange={(e) => setShift(Number(e.target.value))}
+              onChange={(e) => setShift(e.target.value)}
             />
             <Button onClick={handleNext}>Generate</Button>
           </>

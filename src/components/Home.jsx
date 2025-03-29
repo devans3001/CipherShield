@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import EncryptModal from "./Encrypt";
-import { Code } from "lucide-react";
+import { Code, Github, Info } from "lucide-react";
 
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,21 +11,38 @@ const Home = () => {
       <Container>
         <Overlay />
         <Content>
-          <Title>Encrypt, Protect, and Share Securely</Title>
+          <Title>Encrypt, Protect, and Share Securely
+
+          <TooltipWrapper>
+        <InfoIcon><Info /></InfoIcon>
+        <Tooltip>
+          <p><strong>Example:</strong></p>
+          <p>🔹 <strong>Input:</strong> hello</p>
+          <p>🔹 <strong>Shift Key:</strong> 3</p>
+          <p>🔹 <strong>Encrypted:</strong> khoor</p>
+          <p>🔹 <strong>Decryption:</strong> Reverse the shift!</p>
+        </Tooltip>
+      </TooltipWrapper>
+          </Title>
           <SubText>
             Convert your text into an unreadable format using a personalized
             encryption key.
           </SubText>
           <Button onClick={() => setIsOpen(true)}>Start Encrypting</Button>
           <Footer>
-        Made with ❤️ by{" "}
+
+            <p>
+
+        Made with <Heart>❤️</Heart> by{" "}
+            </p>
         <a
           href="https://github.com/your-github"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Devans <Code />
+          Devans 
         </a>
+          <Github />
       </Footer>
         </Content>
         {isOpen && <EncryptModal onClose={() => setIsOpen(false)} />}
@@ -38,7 +55,26 @@ const Home = () => {
 export default Home;
 
 // Styled Components
+const Heart = styled.span`
+  display: inline-block;
+  font-size: 1.5rem;
+  color: red;
+  animation: heartbeat 1.5s infinite ease-in-out;
+
+  @keyframes heartbeat {
+    0% { transform: scale(1); }
+    25% { transform: scale(1.2); }
+    50% { transform: scale(1); }
+    75% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+`;
+
 const Footer = styled.footer`
+display: flex;
+align-items: center;
+justify-content: center;
+gap:5px;
   margin-top: 20px;
   font-size: 1rem;
   opacity: 0.7;
@@ -103,5 +139,37 @@ const Button = styled.button`
 
   &:hover {
     background: #ff9f33;
+  }
+`;
+
+const TooltipWrapper = styled.div`
+  position: relative;
+  display: inline-block;
+  margin-left: 10px;
+`;
+
+const InfoIcon = styled.span`
+  cursor: pointer;
+  font-size: 1.2rem;
+`;
+
+const Tooltip = styled.div`
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+
+  ${TooltipWrapper}:hover & {
+    opacity: 1;
+    visibility: visible;
   }
 `;
