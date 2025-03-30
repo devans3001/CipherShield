@@ -36,7 +36,7 @@ const Home = () => {
         Made with <Heart>❤️</Heart> by{" "}
             </p>
         <a
-          href="https://github.com/your-github"
+          href="https://github.com/devans3001"
           target="_blank"
           rel="noopener noreferrer"
         >
